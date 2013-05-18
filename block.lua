@@ -3,7 +3,7 @@ Block = {}
 function Block:new(x, y)
   -- Inheritance
   block = {}
-  setmetatable(block, { __index = Block })
+  setmetatable(block, {__index = Block})
 
   -- attributes
   block.x = x; block.y = y
@@ -16,7 +16,7 @@ end
 
 function Block:draw()
   love.graphics.setColor(self.color)
-  love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+  love.graphics.rectangle('fill', self.x, self.y, self.width, self.height)
 end
 
 function levelOne()

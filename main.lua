@@ -1,9 +1,12 @@
+require 'game'
 require 'player'
+require 'ball'
 require 'block'
 
 function love.load()
   player = Player:new()
   blocks = levelOne()
+  ball = Ball:new()
 
   enemies = {}
 end
@@ -16,6 +19,7 @@ end
 
 function love.update(dt)
   player:move(dt)
+  ball:move(dt)
 
   local remEnemy = {}
   local remShot = {}
@@ -91,28 +95,15 @@ function love.update(dt)
 end
 
 function love.draw()
-  player:draw()
-
   for i,b in ipairs(blocks) do
     b:draw()
   end
+  player:draw()
+  ball:draw()
 
   -- shots
   love.graphics.setColor(255, 255, 255, 255)
   for i,v in ipairs(player.shots) do
       love.graphics.rectangle('fill', v.x, v.y, 2, 5)
-  end
-end
-
-function checkCollision(ax1,ay1,aw,ah, bx1,by1,bw,bh)
-  local ax2,ay2,bx2,by2 = ax1 + aw, ay1 + ah, bx1 + bw, by1 + bh
-  return ax1 < bx2 and ax2 > bx1 and ay1 < by2 and ay2 > by1
-end
-
-function endGame(victory)
-  if victory then
-    -- WIN GAME
-  else
-    -- LOSE GAME
   end
 end

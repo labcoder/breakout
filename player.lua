@@ -3,10 +3,10 @@ Player = {}
 function Player:new()
   -- Inheritance
   player = {}
-  setmetatable(player, { __index = Player })
+  setmetatable(player, {__index = Player})
 
   -- attributes
-  player.x = 300; player.y = 550
+  player.x = 340; player.y = 550
   player.width = 120; player.height = 10
   player.speed = 300
   player.lives = 3
@@ -40,5 +40,5 @@ end
 
 function Player:draw()
   love.graphics.setColor(self.color)
-  love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+  love.graphics.rectangle('fill', self.x, self.y, self.width, self.height)
 end
