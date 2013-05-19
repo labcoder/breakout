@@ -36,12 +36,10 @@ function Ball:move(dt)
     self.angle = -self.angle
   end
 
-  -- Check if hit by paddle (has to hit top margin of paddle)
-  --if self.x >= player.x and self.x < player.x + player.width then
-  --  if checkCollision(self.x, self.y, 1, 1, player.x, player.y, player.width, player.height) then
-  --    self.angle = -self.angle
-  --  end
-  --end
+  -- check if paddle hit
+  if checkCollision(self.x, self.y, self.radius, self.radius, player.x, player.y, player.width, player.height) then
+    self.angle = -self.angle
+  end
 end
 
 function Ball:draw()
