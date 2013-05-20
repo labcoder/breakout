@@ -38,7 +38,17 @@ function Ball:move(dt)
 
   -- check if paddle hit
   if checkCollision(self.x, self.y, self.radius, self.radius, player.x, player.y, player.width, player.height) then
+    -- (player.x + player.width / 2)
     self.angle = -self.angle
+  end
+
+  -- check if a block is hit
+  for i,v in ipairs(blocks) do
+    if checkCollision(self.x, self.y, self.radius / 2, self.radius / 2, v.x, v.y, v.width, v.height) then
+      self.angle = -self.angle
+      table.remove(blocks, i)
+      break
+    end
   end
 end
 
